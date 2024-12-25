@@ -6,7 +6,6 @@ import { getAIResponse } from '../actions/chat-actions'
 import Link from "next/link"
 import { Send } from 'lucide-react'
 import { TypingEffect } from "../components/TypingEffect"
-import { Stars } from "../components/Stars"
 
 interface Message {
   role: 'user' | 'assistant'
@@ -59,9 +58,6 @@ export default function ChatPage() {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Stars Background */}
-      <Stars />
-
       {/* Background Spline Scene */}
       <div className="fixed inset-0 w-full h-full">
         <iframe
