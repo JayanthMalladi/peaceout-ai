@@ -2,7 +2,12 @@
 
 export async function getAIResponse(input: string) {
   try {
-    const response = await fetch(`/api/chat`, {
+    // Get the deployment URL from environment or use localhost as fallback
+    const baseUrl = process.env.VERCEL_URL 
+      ? `https://${process.env.VERCEL_URL}` 
+      : 'http://localhost:3000'
+    
+    const response = await fetch(`${baseUrl}/api/chat`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
