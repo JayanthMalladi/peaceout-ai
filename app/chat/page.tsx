@@ -133,7 +133,7 @@ export default function ChatPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-black text-white flex flex-col">
       {/* Background Spline Scene */}
       <div className="fixed inset-0 w-full h-full bg-black">
         <spline-viewer
@@ -143,8 +143,8 @@ export default function ChatPage() {
       </div>
 
       {/* Content Layer */}
-      <div className="relative z-20">
-        {/* Header with enhanced styling */}
+      <div className="relative z-20 flex flex-col h-screen">
+        {/* Header */}
         <div className="text-center p-6 bg-gradient-to-b from-black/80 to-transparent">
           <Link href="/" className="text-3xl font-bold inline-flex items-center gap-2 
             text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 
@@ -155,10 +155,11 @@ export default function ChatPage() {
           </Link>
         </div>
 
-        {/* Enhanced Chat Container */}
-        <div className="flex-1 bg-gradient-to-b from-black/40 via-black/60 to-black/40 backdrop-blur-md">
-          <div className="h-[calc(100vh-8rem)] overflow-y-auto p-6 space-y-4 
-            scrollbar-thin scrollbar-thumb-purple-500 scrollbar-track-transparent">
+        {/* Chat Container with Modern Scrollbar */}
+        <div className="flex-1 bg-gradient-to-b from-black/40 via-black/60 to-black/40 backdrop-blur-md overflow-hidden">
+          <div className="h-full overflow-y-auto p-6 space-y-4 
+            scrollbar-thin scrollbar-track-transparent hover:scrollbar-thumb-purple-500/50
+            scrollbar-thumb-purple-500/30 transition-colors">
             {messages.map((message, i) => (
               <div
                 key={i}
@@ -215,35 +216,35 @@ export default function ChatPage() {
               </div>
             )}
           </div>
+        </div>
 
-          {/* Enhanced Input Area */}
-          <div className="border-t border-white/10 p-4 bg-gradient-to-t from-black to-black/50 backdrop-blur-lg">
-            <form onSubmit={handleSubmit} className="max-w-4xl mx-auto flex gap-3">
-              <input
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                placeholder="Share your thoughts..."
-                className="flex-1 px-4 py-3 rounded-lg bg-white/5 border border-white/10 
-                  text-white placeholder-white/50 focus:outline-none focus:ring-2 
-                  focus:ring-purple-500/50 focus:border-transparent transition-all 
-                  hover:bg-white/10 shadow-lg shadow-purple-500/5"
-                disabled={isLoading}
-              />
-              <button
-                type="submit"
-                disabled={isLoading}
-                className="px-8 py-3 text-white rounded-lg bg-gradient-to-r 
-                  from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 
-                  flex items-center gap-2 disabled:opacity-50 transition-all 
-                  shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 
-                  hover:scale-105 active:scale-95"
-              >
-                <span>Send</span>
-                <Send className="h-4 w-4 animate-pulse" />
-              </button>
-            </form>
-          </div>
+        {/* Input Area - Now Fixed at Bottom */}
+        <div className="border-t border-white/10 p-4 bg-gradient-to-t from-black to-black/50 backdrop-blur-lg">
+          <form onSubmit={handleSubmit} className="max-w-4xl mx-auto flex gap-3">
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="Share your thoughts..."
+              className="flex-1 px-4 py-3 rounded-lg bg-white/5 border border-white/10 
+                text-white placeholder-white/50 focus:outline-none focus:ring-2 
+                focus:ring-purple-500/50 focus:border-transparent transition-all 
+                hover:bg-white/10 shadow-lg shadow-purple-500/5"
+              disabled={isLoading}
+            />
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="px-8 py-3 text-white rounded-lg bg-gradient-to-r 
+                from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 
+                flex items-center gap-2 disabled:opacity-50 transition-all 
+                shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 
+                hover:scale-105 active:scale-95"
+            >
+              <span>Send</span>
+              <Send className="h-4 w-4 animate-pulse" />
+            </button>
+          </form>
         </div>
       </div>
     </div>
