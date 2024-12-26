@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 
-const MIRA_API_URL = 'https://flow-api.mira.network/v1/flows/flows/karoly/human-like-chat-bot'
-const FLOW_VERSION = "0.0.4"
+const MIRA_API_URL = 'https://flow-api.mira.network/v1/flows/flows/jaymalladi/mood-analysis-chatbot'
+const FLOW_VERSION = "1.0.4"
 
 export async function POST(request: Request) {
   try {
@@ -25,8 +25,7 @@ export async function POST(request: Request) {
       },
       body: JSON.stringify({
         input: {
-          data: input,
-          answersLength: ""
+          mood: input
         },
         version: FLOW_VERSION
       })
@@ -43,18 +42,9 @@ export async function POST(request: Request) {
       )
     }
 
-    try {
-      const result = JSON.parse(responseText)
-      const responses = JSON.parse(result.result)
-      const randomResponse = responses[Math.floor(Math.random() * responses.length)]
-      return NextResponse.json({ response: randomResponse })
-    } catch (parseError) {
-      console.error('Parse error:', parseError)
-      return NextResponse.json(
-        { error: 'Response parsing error' },
-        { status: 500 }
-      )
-    }
+    const result = JSON.parse(responseText)
+    return NextResponse.json({ response: result.result })
+    
   } catch (error) {
     console.error('Server error:', error)
     return NextResponse.json(

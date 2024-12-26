@@ -1,5 +1,5 @@
-const MIRA_API_URL = 'https://flow-api.mira.network/v1/flows/flows/karoly/human-like-chat-bot'
-const FLOW_VERSION = "0.0.4"
+const MIRA_API_URL = 'https://flow-api.mira.network/v1/flows/flows/jaymalladi/mood-analysis-chatbot'
+const FLOW_VERSION = "1.0.4"
 
 export async function getMiraResponse(input: string) {
   const apiKey = process.env.MIRA_API_KEY
@@ -15,8 +15,7 @@ export async function getMiraResponse(input: string) {
     },
     body: JSON.stringify({
       input: {
-        data: input,
-        answersLength: ""
+        mood: input
       },
       version: FLOW_VERSION
     })
@@ -24,8 +23,7 @@ export async function getMiraResponse(input: string) {
 
   const responseText = await response.text()
   const result = JSON.parse(responseText)
-  const responses = JSON.parse(result.result)
-  return responses[Math.floor(Math.random() * responses.length)]
+  return result.result // Assuming the response format matches your flow
 }
 
 
