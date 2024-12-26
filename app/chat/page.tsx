@@ -136,18 +136,15 @@ export default function ChatPage() {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Background Spline Scene */}
-      <div className="fixed inset-0 w-full h-full">
-        <iframe
-          src="https://my.spline.design/untitled-8nmHiRrfw99MM2-c/"
-          frameBorder="0"
-          width="100%"
-          height="100%"
-          style={{ pointerEvents: 'none' }}
-        ></iframe>
+      <div className="fixed inset-0 w-full h-full bg-black">
+        <spline-viewer
+          url="https://prod.spline.design/UuyCx1DSUQcS9uVa/scene.splinecode"
+          className="w-full h-full"
+        ></spline-viewer>
       </div>
 
       {/* Content Layer */}
-      <div className="relative z-10 min-h-screen flex flex-col">
+      <div className="relative z-20">
         {/* Header */}
         <div className="text-center p-4">
           <Link href="/" className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 animate-gradient hover:opacity-80 transition-opacity">
