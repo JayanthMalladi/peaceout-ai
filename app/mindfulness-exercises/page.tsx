@@ -88,7 +88,7 @@ export default function MindfulnessPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col page-transition">
+    <div className="min-h-screen bg-black text-white flex flex-col">
       {/* Background Spline Scene */}
       <div className="fixed inset-0 w-full h-full bg-black">
         <spline-viewer
