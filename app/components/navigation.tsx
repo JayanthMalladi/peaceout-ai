@@ -15,6 +15,16 @@ export function Navigation() {
         >
           PeaceOut.AI
         </Link>
+
+        <Link
+          href="/developers"
+          className="px-6 py-2 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 
+            text-white hover:opacity-90 transition-all duration-300
+            hover:transform hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20
+            backdrop-blur-sm border border-white/10"
+        >
+          Meet the Devs
+        </Link>
       </div>
     </nav>
   )
