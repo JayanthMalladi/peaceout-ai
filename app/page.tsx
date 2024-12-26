@@ -23,8 +23,14 @@ export default function Home() {
           
           {/* Content */}
           <div className="relative z-10">
-            <h2 className="text-4xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
-              Features
+            <h2 className="text-4xl font-bold text-center mb-16 
+              bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400
+              group relative inline-block w-full">
+              {/* Glow effect */}
+              <span className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 
+                blur-2xl opacity-30 group-hover:opacity-50 transition-opacity duration-500 
+                animate-pulse"></span>
+              <span className="relative">Features</span>
             </h2>
             <div className="max-w-7xl mx-auto px-6">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
