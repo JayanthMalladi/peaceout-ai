@@ -57,7 +57,7 @@ export default function ChatPage() {
     setGender(selectedGender)
     setMessages([{
       role: 'assistant',
-      content: 'Welcome to PeaceOut.AI! How can I assist you today?'
+      content: 'Welcome to PeaceOut.AI! Tell me what\'s on your mind and I\'ll do my best to help you.'
     }])
   }
 
