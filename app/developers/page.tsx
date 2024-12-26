@@ -6,7 +6,7 @@ import { ArrowLeft, Github, Linkedin, Mail } from 'lucide-react'
 
 const developers = [
   {
-    name: "Developer 1",
+    name: "Jayanth Malladi",
     role: "Full Stack Developer",
     image: "https://i.imgur.com/pCVQiO9.png", // Replace with actual image
     bio: "Passionate about creating innovative solutions in mental health tech.",
@@ -15,7 +15,7 @@ const developers = [
     email: "dev1@example.com"
   },
   {
-    name: "Developer 2",
+    name: "Shekahr Suman",
     role: "AI/ML Engineer",
     image: "https://i.imgur.com/g2aZbAY.png", // Replace with actual image
     bio: "Specialized in AI-powered mental health support systems.",
@@ -61,14 +61,15 @@ export default function DevelopersPage() {
             {developers.map((dev, index) => (
               <div 
                 key={index}
-                className="group relative"
+                className="group relative h-[450px]"
               >
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-pink-600 
                   rounded-2xl opacity-50 group-hover:opacity-100 transition-all duration-500 
                   blur-xl group-hover:blur-2xl">
                 </div>
                 <div className="relative bg-black/80 backdrop-blur-xl rounded-xl p-8 
-                  hover:bg-black/60 transition-all duration-500 border border-white/10">
+                  hover:bg-black/60 transition-all duration-500 border border-white/10
+                  h-full flex flex-col justify-between">
                   <div className="flex flex-col items-center text-center">
                     <div className="w-32 h-32 rounded-full overflow-hidden mb-6 
                       ring-2 ring-purple-500/30 ring-offset-2 ring-offset-black/50">
@@ -81,35 +82,35 @@ export default function DevelopersPage() {
                     <h2 className="text-2xl font-bold mb-2">{dev.name}</h2>
                     <p className="text-purple-400 mb-4">{dev.role}</p>
                     <p className="text-gray-300 mb-6">{dev.bio}</p>
-                    
-                    {/* Social Links */}
-                    <div className="flex gap-4">
-                      <a 
-                        href={dev.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 rounded-full bg-white/5 hover:bg-white/10 
-                          transition-colors duration-300"
-                      >
-                        <Github className="w-5 h-5" />
-                      </a>
-                      <a 
-                        href={dev.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 rounded-full bg-white/5 hover:bg-white/10 
-                          transition-colors duration-300"
-                      >
-                        <Linkedin className="w-5 h-5" />
-                      </a>
-                      <a 
-                        href={`mailto:${dev.email}`}
-                        className="p-2 rounded-full bg-white/5 hover:bg-white/10 
-                          transition-colors duration-300"
-                      >
-                        <Mail className="w-5 h-5" />
-                      </a>
-                    </div>
+                  </div>
+                  
+                  {/* Social Links */}
+                  <div className="flex gap-4 justify-center">
+                    <a 
+                      href={dev.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 rounded-full bg-white/5 hover:bg-white/10 
+                        transition-colors duration-300"
+                    >
+                      <Github className="w-5 h-5" />
+                    </a>
+                    <a 
+                      href={dev.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 rounded-full bg-white/5 hover:bg-white/10 
+                        transition-colors duration-300"
+                    >
+                      <Linkedin className="w-5 h-5" />
+                    </a>
+                    <a 
+                      href={`mailto:${dev.email}`}
+                      className="p-2 rounded-full bg-white/5 hover:bg-white/10 
+                        transition-colors duration-300"
+                    >
+                      <Mail className="w-5 h-5" />
+                    </a>
                   </div>
                 </div>
               </div>
