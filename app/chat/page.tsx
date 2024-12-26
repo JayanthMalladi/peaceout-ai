@@ -62,18 +62,25 @@ export default function ChatPage() {
     setGender(selectedGender)
     setMessages([{
       role: 'assistant',
-      content: `Welcome to PeaceOut.AI! I'm here to support you through a two-step process:
+      content: 
+`Welcome to PeaceOut.AI! 🌟
 
-1. First, please share your primary concern or what's troubling you (e.g., "I'm feeling anxious about work deadlines" or "I'm having trouble sleeping lately")
+I'm here to support you through a two-step process:
 
-2. Then, I'll ask about your preferred type of support:
+1️⃣ First, please share your primary concern or what's troubling you. 
+   For example:
+   • "I'm feeling anxious about work deadlines"
+   • "I'm having trouble sleeping lately"
+   • "I'm feeling overwhelmed with relationships"
+
+2️⃣ Then, I'll ask about your preferred type of support:
    • Immediate anxiety relief
    • Sleep improvement
    • Mindfulness exercises
    • Social/relationship guidance
    • Specific coping strategies
 
-Let's start - what's your main concern today?`
+Let's start - what's your main concern today? 💭`
     }])
   }
 
@@ -91,13 +98,18 @@ Let's start - what's your main concern today?`
       
       if (currentQuestion === 'concern') {
         setUserInputs(prev => ({ ...prev, primary_concern: input }))
-        response = `Thank you for sharing. What type of support would you prefer? Choose from:
+        response = 
+`Thank you for sharing that with me. 🤗
+
+Please choose your preferred type of support from these options:
 
 • Immediate anxiety relief
 • Sleep improvement
 • Mindfulness exercises
 • Social/relationship guidance
-• Specific coping strategies`
+• Specific coping strategies
+
+Which approach would you find most helpful?`
         setCurrentQuestion('preference')
       } else {
         setUserInputs(prev => ({ ...prev, support_preference: input }))
