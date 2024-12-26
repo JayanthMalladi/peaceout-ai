@@ -14,7 +14,7 @@ interface Message {
 
 const ASSISTANT_IMAGE = "https://i.imgur.com/EiC82W4.png"
 const MALE_USER_IMAGE = "https://i.imgur.com/pCVQiO9.png"
-const FEMALE_USER_IMAGE = "https://imgur.com/a/L0N41uv.png"
+const FEMALE_USER_IMAGE = "https://i.imgur.com/g2aZbAY.png"
 const DEFAULT_USER_IMAGE = "https://robohash.org/user?set=4"
 
 export default function ChatPage() {
