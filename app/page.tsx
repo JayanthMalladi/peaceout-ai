@@ -23,15 +23,18 @@ export default function Home() {
           
           {/* Content */}
           <div className="relative z-10">
-            <h2 className="text-4xl font-bold text-center mb-16 
-              bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400
-              group relative inline-block w-full">
-              {/* Glow effect */}
-              <span className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 
-                blur-2xl opacity-30 group-hover:opacity-50 transition-opacity duration-500 
-                animate-pulse"></span>
-              <span className="relative">Features</span>
-            </h2>
+            <div className="flex justify-center mb-16">
+              <div className="relative group">
+                <div className="absolute -inset-1 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 
+                  opacity-25 group-hover:opacity-50 blur-xl transition-all duration-500 
+                  group-hover:blur-2xl animate-pulse"></div>
+                <h2 className="relative text-5xl font-bold bg-clip-text text-transparent 
+                  bg-gradient-to-r from-blue-400 to-purple-400 px-8 py-2">
+                  Features
+                </h2>
+              </div>
+            </div>
+
             <div className="max-w-7xl mx-auto px-6">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                 {/* AI-Powered Support */}
