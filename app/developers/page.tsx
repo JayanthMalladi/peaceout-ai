@@ -7,12 +7,12 @@ import { ArrowLeft, Github, Linkedin, Mail } from 'lucide-react'
 const developers = [
   {
     name: "Jayanth Malladi",
-    role: "Student at IIT Patna | AI/ML Enthusiast | Full Stack Development",
+    role: "Student at IIT Patna | AI/ML Enthusiast | Full Stack Developer",
     image: "https://i.imgur.com/pCVQiO9.png",
     bio: "Passionate about creating innovative solutions in mental health tech.",
-    github: "https://github.com/dev1",
-    linkedin: "https://linkedin.com/in/dev1",
-    email: "dev1@example.com"
+    github: "https://github.com/JayanthMalladi",
+    linkedin: "https://www.linkedin.com/in/jayanthmalladi/",
+    email: "jayanthmalladi844@gmail.com"
   },
   {
     name: "Shekahr Suman",
