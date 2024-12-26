@@ -2,15 +2,19 @@
 
 import React from 'react'
 import { Navigation } from "./components/navigation"
-import { SplineScene } from "./components/SplineScene"
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Main Content */}
       <div className="relative">
-        {/* Spline Scene (Optimized) */}
-        <SplineScene />
+        {/* Spline Scene (Not Fixed) */}
+        <div className="h-screen">
+          <spline-viewer
+            url="https://prod.spline.design/fPaXbkw382AUaqs0/scene.splinecode"
+            className="w-full h-full"
+          />
+        </div>
 
         {/* Features Section with Contrasting Background */}
         <section className="relative py-32 bg-gradient-to-b from-black via-purple-900/20 to-black">

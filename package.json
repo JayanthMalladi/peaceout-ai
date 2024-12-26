@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@splinetool/react-spline": "^4.0.0",
-    "@splinetool/loader": "^1.0.54",
+    "@splinetool/viewer": "^1.9.54",
     "dotenv": "^16.4.7",
     "lucide-react": "latest",
     "next": "^14.1.0",
