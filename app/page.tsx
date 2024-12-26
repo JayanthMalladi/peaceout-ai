@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { Navigation } from "./components/navigation"
+import { BlogCarousel } from "./components/BlogCarousel"
 
 export default function Home() {
   return (
@@ -112,45 +113,12 @@ export default function Home() {
 
         {/* Blog Posts Section */}
         <section className="py-32 px-6">
-          <h2 className="text-4xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
-            Latest Insights
+          <h2 className="text-4xl font-bold text-center mb-16 bg-clip-text text-transparent 
+            bg-gradient-to-r from-blue-400 to-purple-400">
+            Blogs
           </h2>
-          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Blog Post 1 */}
-            <div className="bg-white/5 backdrop-blur-lg rounded-xl overflow-hidden 
-              hover:transform hover:scale-105 transition-all duration-300 
-              hover:shadow-xl hover:shadow-purple-500/20 border border-white/10">
-              <div className="h-48 bg-gradient-to-br from-purple-600 to-blue-600"></div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">Understanding Anxiety</h3>
-                <p className="text-gray-400 mb-4">Learn about the common triggers and coping mechanisms for anxiety.</p>
-                <a href="#" className="text-purple-400 hover:text-purple-300">Read more →</a>
-              </div>
-            </div>
-
-            {/* Blog Post 2 */}
-            <div className="bg-white/5 backdrop-blur-lg rounded-xl overflow-hidden 
-              hover:transform hover:scale-105 transition-all duration-300 
-              hover:shadow-xl hover:shadow-purple-500/20 border border-white/10">
-              <div className="h-48 bg-gradient-to-br from-blue-600 to-purple-600"></div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">Mindfulness Basics</h3>
-                <p className="text-gray-400 mb-4">Discover the fundamentals of mindfulness and meditation.</p>
-                <a href="#" className="text-purple-400 hover:text-purple-300">Read more →</a>
-              </div>
-            </div>
-
-            {/* Blog Post 3 */}
-            <div className="bg-white/5 backdrop-blur-lg rounded-xl overflow-hidden 
-              hover:transform hover:scale-105 transition-all duration-300 
-              hover:shadow-xl hover:shadow-purple-500/20 border border-white/10">
-              <div className="h-48 bg-gradient-to-br from-pink-600 to-purple-600"></div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">Self-Care Tips</h3>
-                <p className="text-gray-400 mb-4">Essential self-care practices for better mental health.</p>
-                <a href="#" className="text-purple-400 hover:text-purple-300">Read more →</a>
-              </div>
-            </div>
+          <div className="max-w-7xl mx-auto">
+            <BlogCarousel />
           </div>
         </section>
       </div>
