@@ -12,7 +12,7 @@ interface Message {
   content: string
 }
 
-const ASSISTANT_IMAGE = "https://imgur.com/a/9NPA0sZ"
+const ASSISTANT_IMAGE = "https://i.imgur.com/EiC82W4.png"
 const USER_IMAGE = "https://robohash.org/user?set=set4&size=96x96"
 
 export default function ChatPage() {
