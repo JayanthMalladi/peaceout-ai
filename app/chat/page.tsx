@@ -198,7 +198,22 @@ export default function ChatPage() {
                 )}
               </div>
             ))}
-            {/* Typing indicator with enhanced styling */}
+            {isLoading && !isTyping && (
+              <div className="flex justify-start">
+                <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 
+                  ring-2 ring-purple-500/30 ring-offset-2 ring-offset-black/50 animate-pulse">
+                  <img
+                    src={ASSISTANT_IMAGE}
+                    alt="AI Assistant"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 backdrop-blur-sm 
+                  border border-white/10 rounded-lg px-4 py-2 ml-3 animate-pulse">
+                  Thinking...
+                </div>
+              </div>
+            )}
             {isTyping && (
               <div className="flex items-start gap-3 justify-start">
                 <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 
