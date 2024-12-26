@@ -2,9 +2,12 @@
 
 export async function getAIResponse(input: string) {
   try {
+    // Use absolute URL for production
     const baseUrl = process.env.VERCEL_URL 
       ? `https://${process.env.VERCEL_URL}` 
-      : 'http://localhost:3000'
+      : process.env.NODE_ENV === 'development' 
+        ? 'http://localhost:3000'
+        : 'https://peaceout-ai.vercel.app'
     
     console.log('Making request to:', `${baseUrl}/api/chat`)
     
@@ -17,11 +20,17 @@ export async function getAIResponse(input: string) {
       cache: 'no-store'
     })
 
+    if (!response.ok) {
+      const errorText = await response.text()
+      console.error('API Error:', errorText)
+      throw new Error('API request failed')
+    }
+
     const data = await response.json()
     console.log('Response data:', data)
     
-    if (!response.ok || data.error) {
-      throw new Error(data.error || 'API request failed')
+    if (data.error) {
+      throw new Error(data.error)
     }
 
     return data.response
