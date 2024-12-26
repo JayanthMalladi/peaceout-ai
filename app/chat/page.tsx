@@ -17,6 +17,23 @@ const MALE_USER_IMAGE = "https://i.imgur.com/pCVQiO9.png"
 const FEMALE_USER_IMAGE = "https://i.imgur.com/g2aZbAY.png"
 const DEFAULT_USER_IMAGE = "https://robohash.org/user?set=4"
 
+const popupAnimation = `@keyframes popup {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}`
+
+if (typeof document !== 'undefined') {
+  const style = document.createElement('style')
+  style.textContent = popupAnimation
+  document.head.appendChild(style)
+}
+
 export default function ChatPage() {
   const [gender, setGender] = useState<string | null>(null)
   const [messages, setMessages] = useState<Message[]>([])
@@ -81,27 +98,34 @@ export default function ChatPage() {
   if (!gender) {
     return (
       <div className="min-h-screen bg-black text-white flex items-center justify-center">
-        <div className="bg-white/10 backdrop-blur-md p-8 rounded-lg max-w-md w-full">
+        <div className="bg-white/10 backdrop-blur-md p-8 rounded-lg max-w-md w-full 
+          animate-[popup_0.3s_ease-out] transform-gpu">
           <h2 className="text-2xl font-bold text-center mb-8">Welcome to PeaceOut.AI</h2>
           <p className="text-center mb-6">Please select your gender to continue:</p>
           <div className="flex flex-col gap-4">
             <button
               onClick={() => handleGenderSelect('male')}
-              className="px-8 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 hover:opacity-90 transition-opacity"
+              className="px-8 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 
+                hover:opacity-90 transition-all duration-300 ease-out
+                hover:transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/20"
             >
               Male
             </button>
             <button
               onClick={() => handleGenderSelect('female')}
-              className="px-8 py-3 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-90 transition-opacity"
+              className="px-8 py-3 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 
+                hover:opacity-90 transition-all duration-300 ease-out
+                hover:transform hover:scale-105 hover:shadow-lg hover:shadow-pink-500/20"
             >
               Female
             </button>
             <button
               onClick={() => handleGenderSelect('other')}
-              className="px-8 py-3 rounded-lg bg-gradient-to-r from-gray-600 to-gray-700 hover:opacity-90 transition-opacity"
+              className="px-8 py-3 rounded-lg bg-gradient-to-r from-gray-600 to-gray-700 
+                hover:opacity-90 transition-all duration-300 ease-out
+                hover:transform hover:scale-105 hover:shadow-lg hover:shadow-gray-500/20"
             >
-              Other
+              Prefer not to say
             </button>
           </div>
         </div>
