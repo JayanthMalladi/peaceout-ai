@@ -32,9 +32,7 @@ const config = {
       },
     },
   },
-  plugins: [
-    require('tailwind-scrollbar')({ nocompatible: true }),
-  ],
+  plugins: [],
 }
 
 module.exports = config
