@@ -6,15 +6,14 @@ import { getAIResponse } from '../actions/chat-actions'
 import Link from "next/link"
 import { Send } from 'lucide-react'
 import { TypingEffect } from "../components/TypingEffect"
-import Image from 'next/image'
 
 interface Message {
   role: 'user' | 'assistant'
   content: string
 }
 
-const ASSISTANT_IMAGE = "https://api.dicebear.com/7.x/bottts/svg?seed=peaceout&backgroundColor=b6e3f4"
-const USER_IMAGE = "https://api.dicebear.com/7.x/avataaars/svg?seed=user"
+const ASSISTANT_IMAGE = "https://raw.githubusercontent.com/dicebear/dicebear/main/assets/logo-readme.png"
+const USER_IMAGE = "https://raw.githubusercontent.com/dicebear/dicebear/main/assets/logo-readme.png"
 
 export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([{
@@ -94,11 +93,9 @@ export default function ChatPage() {
               >
                 {message.role === 'assistant' && (
                   <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 bg-white/10">
-                    <Image
+                    <img
                       src={ASSISTANT_IMAGE}
                       alt="AI Assistant"
-                      width={32}
-                      height={32}
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -114,11 +111,9 @@ export default function ChatPage() {
                 </div>
                 {message.role === 'user' && (
                   <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 bg-white/10">
-                    <Image
+                    <img
                       src={USER_IMAGE}
                       alt="User"
-                      width={32}
-                      height={32}
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -128,11 +123,9 @@ export default function ChatPage() {
             {isTyping && (
               <div className="flex items-start gap-3 justify-start">
                 <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 bg-white/10">
-                  <Image
+                  <img
                     src={ASSISTANT_IMAGE}
                     alt="AI Assistant"
-                    width={32}
-                    height={32}
                     className="w-full h-full object-cover"
                   />
                 </div>
