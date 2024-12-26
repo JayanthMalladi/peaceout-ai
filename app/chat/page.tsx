@@ -165,7 +165,7 @@ export default function ChatPage() {
                 key={i}
                 className={`flex items-start gap-3 ${
                   message.role === 'user' ? 'justify-end' : 'justify-start'
-                } animate-[slideIn_0.3s_ease-out]`}
+                }`}
               >
                 {message.role === 'assistant' && (
                   <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 
@@ -178,13 +178,13 @@ export default function ChatPage() {
                   </div>
                 )}
                 <div
-                  className={`max-w-[80%] rounded-lg px-4 py-2 
+                  className={`max-w-[80%] rounded-2xl px-6 py-3 
                     ${message.role === 'user'
-                      ? 'bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg shadow-purple-500/20 transform hover:scale-[1.02] transition-transform'
-                      : 'bg-gradient-to-r from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-white/10 transform hover:scale-[1.02] transition-transform'
+                      ? 'bg-gradient-to-br from-blue-600 to-purple-600 shadow-lg shadow-purple-500/20 transform hover:scale-[1.02] transition-transform'
+                      : 'bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-white/10 transform hover:scale-[1.02] transition-transform'
                     }`}
                 >
-                  {message.content}
+                  <p className="text-[15px] leading-relaxed">{message.content}</p>
                 </div>
                 {message.role === 'user' && (
                   <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 
@@ -198,22 +198,7 @@ export default function ChatPage() {
                 )}
               </div>
             ))}
-            {isLoading && !isTyping && (
-              <div className="flex justify-start">
-                <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 
-                  ring-2 ring-purple-500/30 ring-offset-2 ring-offset-black/50 animate-pulse">
-                  <img
-                    src={ASSISTANT_IMAGE}
-                    alt="AI Assistant"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 backdrop-blur-sm 
-                  border border-white/10 rounded-lg px-4 py-2 ml-3 animate-pulse">
-                  Thinking...
-                </div>
-              </div>
-            )}
+            {/* Typing indicator with enhanced styling */}
             {isTyping && (
               <div className="flex items-start gap-3 justify-start">
                 <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 
@@ -224,8 +209,8 @@ export default function ChatPage() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 backdrop-blur-sm 
-                  border border-white/10 rounded-lg px-4 py-2 animate-fade-in">
+                <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm 
+                  border border-white/10 rounded-2xl px-6 py-3">
                   <TypingEffect text={currentResponse} />
                 </div>
               </div>
@@ -233,31 +218,31 @@ export default function ChatPage() {
           </div>
         </div>
 
-        {/* Input Area - Now Fixed at Bottom */}
-        <div className="border-t border-white/10 p-4 bg-gradient-to-t from-black to-black/50 backdrop-blur-lg">
-          <form onSubmit={handleSubmit} className="max-w-4xl mx-auto flex gap-3">
+        {/* Input Area with Enhanced Design */}
+        <div className="border-t border-white/10 p-6 bg-gradient-to-t from-black to-black/50 backdrop-blur-lg">
+          <form onSubmit={handleSubmit} className="max-w-4xl mx-auto flex gap-4">
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Share your thoughts..."
-              className="flex-1 px-4 py-3 rounded-lg bg-white/5 border border-white/10 
+              className="flex-1 px-6 py-4 rounded-xl bg-white/5 border border-white/10 
                 text-white placeholder-white/50 focus:outline-none focus:ring-2 
                 focus:ring-purple-500/50 focus:border-transparent transition-all 
-                hover:bg-white/10 shadow-lg shadow-purple-500/5"
+                hover:bg-white/10 shadow-lg shadow-purple-500/5 text-[15px]"
               disabled={isLoading}
             />
             <button
               type="submit"
               disabled={isLoading}
-              className="px-8 py-3 text-white rounded-lg bg-gradient-to-r 
+              className="px-8 py-4 text-white rounded-xl bg-gradient-to-br 
                 from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 
-                flex items-center gap-2 disabled:opacity-50 transition-all 
+                flex items-center gap-3 disabled:opacity-50 transition-all duration-300
                 shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 
-                hover:scale-105 active:scale-95"
+                hover:scale-105 active:scale-95 font-medium"
             >
               <span>Send</span>
-              <Send className="h-4 w-4 animate-pulse" />
+              <Send className="h-5 w-5 animate-pulse" />
             </button>
           </form>
         </div>
