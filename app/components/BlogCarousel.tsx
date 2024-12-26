@@ -52,7 +52,7 @@ export function BlogCarousel() {
   }
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full px-16">
       <div className="overflow-hidden">
         <div 
           className="flex transition-transform duration-500 ease-out"
@@ -67,22 +67,24 @@ export function BlogCarousel() {
                 href={post.url}
                 target="_blank"
                 rel="noopener noreferrer" 
-                className="block group"
+                className="block group h-[500px]"
               >
                 <div className="bg-white/5 backdrop-blur-lg rounded-xl overflow-hidden 
                   hover:transform hover:scale-105 transition-all duration-300 
                   hover:shadow-xl hover:shadow-purple-500/20 border border-white/10 h-full">
-                  <div className="h-48 overflow-hidden">
+                  <div className="h-56 overflow-hidden">
                     <img 
                       src={post.image} 
                       alt={post.title}
                       className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                     />
                   </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-purple-400 
-                      transition-colors duration-300">{post.title}</h3>
-                    <p className="text-gray-400 mb-4 line-clamp-2">{post.excerpt}</p>
+                  <div className="p-8 flex flex-col justify-between h-[calc(100%-14rem)]">
+                    <div>
+                      <h3 className="text-xl font-semibold mb-4 text-white group-hover:text-purple-400 
+                        transition-colors duration-300 line-clamp-2">{post.title}</h3>
+                      <p className="text-gray-400 mb-4 line-clamp-3">{post.excerpt}</p>
+                    </div>
                     <span className="text-purple-400 group-hover:text-purple-300 inline-flex items-center">
                       Read more 
                       <ChevronRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -95,22 +97,26 @@ export function BlogCarousel() {
         </div>
       </div>
 
-      {/* Navigation Buttons */}
+      {/* Modern Navigation Buttons - Outside Cards */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 
-          text-white p-2 rounded-full backdrop-blur-sm transition-all duration-300
-          hover:scale-110 border border-white/10"
+        className="absolute left-0 top-1/2 -translate-y-1/2 
+          text-white/50 hover:text-white transition-all duration-300
+          hover:scale-110 group"
       >
-        <ChevronLeft className="w-6 h-6" />
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-transparent 
+          rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <ChevronLeft className="w-8 h-8 relative z-10" />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 
-          text-white p-2 rounded-full backdrop-blur-sm transition-all duration-300
-          hover:scale-110 border border-white/10"
+        className="absolute right-0 top-1/2 -translate-y-1/2 
+          text-white/50 hover:text-white transition-all duration-300
+          hover:scale-110 group"
       >
-        <ChevronRight className="w-6 h-6" />
+        <div className="absolute inset-0 bg-gradient-to-l from-purple-600/20 to-transparent 
+          rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <ChevronRight className="w-8 h-8 relative z-10" />
       </button>
     </div>
   )

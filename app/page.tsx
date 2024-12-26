@@ -113,10 +113,18 @@ export default function Home() {
 
         {/* Blog Posts Section */}
         <section className="py-32 px-6">
-          <h2 className="text-4xl font-bold text-center mb-16 bg-clip-text text-transparent 
-            bg-gradient-to-r from-blue-400 to-purple-400">
-            Blogs
-          </h2>
+          {/* Glowing Blogs Title */}
+          <div className="flex justify-center mb-16">
+            <div className="relative group">
+              <div className="absolute -inset-1 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 
+                opacity-25 group-hover:opacity-50 blur-xl transition-all duration-500 
+                group-hover:blur-2xl animate-pulse"></div>
+              <h2 className="relative text-5xl font-bold bg-clip-text text-transparent 
+                bg-gradient-to-r from-blue-400 to-purple-400 px-8 py-2">
+                Blogs
+              </h2>
+            </div>
+          </div>
           <div className="max-w-7xl mx-auto">
             <BlogCarousel />
           </div>
