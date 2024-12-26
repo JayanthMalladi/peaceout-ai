@@ -6,6 +6,7 @@ import { getAIResponse } from '../actions/chat-actions'
 import Link from "next/link"
 import { Send } from 'lucide-react'
 import { TypingEffect } from "../components/TypingEffect"
+import '../types/spline.d.ts'
 
 interface Message {
   role: 'user' | 'assistant'
@@ -140,7 +141,8 @@ export default function ChatPage() {
         <spline-viewer
           url="https://prod.spline.design/UuyCx1DSUQcS9uVa/scene.splinecode"
           className="w-full h-full"
-        ></spline-viewer>
+          style={{ width: '100%', height: '100%' }}
+        />
       </div>
 
       {/* Content Layer */}
