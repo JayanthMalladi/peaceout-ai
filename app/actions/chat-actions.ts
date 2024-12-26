@@ -2,10 +2,11 @@
 
 export async function getAIResponse(input: string) {
   try {
-    // Get the deployment URL from environment or use localhost as fallback
     const baseUrl = process.env.VERCEL_URL 
       ? `https://${process.env.VERCEL_URL}` 
       : 'http://localhost:3000'
+    
+    console.log('Making request to:', `${baseUrl}/api/chat`)
     
     const response = await fetch(`${baseUrl}/api/chat`, {
       method: 'POST',
@@ -13,17 +14,20 @@ export async function getAIResponse(input: string) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ input }),
+      cache: 'no-store'
     })
 
-    if (!response.ok) {
-      throw new Error('Failed to get AI response')
+    const data = await response.json()
+    console.log('Response data:', data)
+    
+    if (!response.ok || data.error) {
+      throw new Error(data.error || 'API request failed')
     }
 
-    const data = await response.json()
     return data.response
   } catch (error) {
-    console.error('Error in getAIResponse:', error)
-    throw error
+    console.error('Detailed error:', error)
+    throw new Error(`Request failed: ${error.message}`)
   }
 }
 

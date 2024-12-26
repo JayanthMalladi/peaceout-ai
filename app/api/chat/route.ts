@@ -1,43 +1,64 @@
 import { NextResponse } from 'next/server'
 
-// Remove hardcoded API key
-const API_KEY = process.env.MIRA_API_KEY
+const MIRA_API_URL = 'https://flow-api.mira.network/v1/flows/flows/karoly/human-like-chat-bot'
+const FLOW_VERSION = "0.0.4"
 
-export async function POST(req: Request) {
+export async function POST(request: Request) {
   try {
-    const { input } = await req.json()
-    
-    const response = await fetch('https://api.mira-ai.io/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${API_KEY}`
-      },
-      body: JSON.stringify({
-        messages: [{ role: 'user', content: input }]
-      })
-    })
-
-    const responseText = await response.text()
-    console.log('Mira API response:', responseText)
-
-    if (!response.ok) {
+    const apiKey = process.env.MIRA_API_KEY
+    if (!apiKey) {
+      console.error('MIRA_API_KEY not configured')
       return NextResponse.json(
-        { error: `Mira API error: ${responseText}` }, 
-        { status: response.status }
+        { error: 'API configuration error' },
+        { status: 500 }
       )
     }
 
-    const result = JSON.parse(responseText)
-    // Parse the result and get a random response from the array
-    const responses = JSON.parse(result.result)
-    const randomResponse = responses[Math.floor(Math.random() * responses.length)]
-    
-    return NextResponse.json({ response: randomResponse })
+    const { input } = await request.json()
+    console.log('Received input:', input)
+
+    const miraResponse = await fetch(MIRA_API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'MiraAuthorization': apiKey
+      },
+      body: JSON.stringify({
+        input: {
+          data: input,
+          answersLength: ""
+        },
+        version: FLOW_VERSION
+      })
+    })
+
+    const responseText = await miraResponse.text()
+    console.log('Mira API raw response:', responseText)
+
+    if (!miraResponse.ok) {
+      console.error('Mira API error:', responseText)
+      return NextResponse.json(
+        { error: 'External API error' },
+        { status: miraResponse.status }
+      )
+    }
+
+    try {
+      const result = JSON.parse(responseText)
+      const responses = JSON.parse(result.result)
+      const randomResponse = responses[Math.floor(Math.random() * responses.length)]
+      return NextResponse.json({ response: randomResponse })
+    } catch (parseError) {
+      console.error('Parse error:', parseError)
+      return NextResponse.json(
+        { error: 'Response parsing error' },
+        { status: 500 }
+      )
+    }
   } catch (error) {
     console.error('Server error:', error)
     return NextResponse.json(
-      { error: error.message || 'Internal server error' }, 
+      { error: 'Internal server error' },
       { status: 500 }
     )
   }
