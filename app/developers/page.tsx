@@ -7,8 +7,8 @@ import { ArrowLeft, Github, Linkedin, Mail } from 'lucide-react'
 const developers = [
   {
     name: "Jayanth Malladi",
-    role: "Full Stack Developer",
-    image: "https://i.imgur.com/pCVQiO9.png", // Replace with actual image
+    role: "Student at IIT Patna | AI/ML Enthusiast | Full Stack Development",
+    image: "https://i.imgur.com/pCVQiO9.png",
     bio: "Passionate about creating innovative solutions in mental health tech.",
     github: "https://github.com/dev1",
     linkedin: "https://linkedin.com/in/dev1",
@@ -17,7 +17,7 @@ const developers = [
   {
     name: "Shekahr Suman",
     role: "AI/ML Engineer",
-    image: "https://i.imgur.com/g2aZbAY.png", // Replace with actual image
+    image: "https://i.imgur.com/g2aZbAY.png",
     bio: "Specialized in AI-powered mental health support systems.",
     github: "https://github.com/dev2",
     linkedin: "https://linkedin.com/in/dev2",
