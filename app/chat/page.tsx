@@ -13,17 +13,36 @@ interface Message {
 }
 
 const ASSISTANT_IMAGE = "https://i.imgur.com/EiC82W4.png"
-const USER_IMAGE = "https://robohash.org/user?set=set4&size=96x96"
+const MALE_USER_IMAGE = "https://i.imgur.com/pCVQiO9.png"
+const FEMALE_USER_IMAGE = "https://i.imgur.com/undefined.png"
+const DEFAULT_USER_IMAGE = "https://robohash.org/user?set=4"
 
 export default function ChatPage() {
-  const [messages, setMessages] = useState<Message[]>([{
-    role: 'assistant',
-    content: 'Welcome to PeaceOut.AI! How can I assist you today?'
-  }])
+  const [gender, setGender] = useState<string | null>(null)
+  const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [isTyping, setIsTyping] = useState(false)
   const [currentResponse, setCurrentResponse] = useState('')
+
+  const getUserImage = () => {
+    switch(gender) {
+      case 'male':
+        return MALE_USER_IMAGE
+      case 'female':
+        return FEMALE_USER_IMAGE
+      default:
+        return DEFAULT_USER_IMAGE
+    }
+  }
+
+  const handleGenderSelect = (selectedGender: string) => {
+    setGender(selectedGender)
+    setMessages([{
+      role: 'assistant',
+      content: 'Welcome to PeaceOut.AI! How can I assist you today?'
+    }])
+  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -57,6 +76,37 @@ export default function ChatPage() {
     } finally {
       setIsLoading(false)
     }
+  }
+
+  if (!gender) {
+    return (
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <div className="bg-white/10 backdrop-blur-md p-8 rounded-lg max-w-md w-full">
+          <h2 className="text-2xl font-bold text-center mb-8">Welcome to PeaceOut.AI</h2>
+          <p className="text-center mb-6">Please select your gender to continue:</p>
+          <div className="flex flex-col gap-4">
+            <button
+              onClick={() => handleGenderSelect('male')}
+              className="px-8 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 hover:opacity-90 transition-opacity"
+            >
+              Male
+            </button>
+            <button
+              onClick={() => handleGenderSelect('female')}
+              className="px-8 py-3 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-90 transition-opacity"
+            >
+              Female
+            </button>
+            <button
+              onClick={() => handleGenderSelect('other')}
+              className="px-8 py-3 rounded-lg bg-gradient-to-r from-gray-600 to-gray-700 hover:opacity-90 transition-opacity"
+            >
+              Other
+            </button>
+          </div>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -112,7 +162,7 @@ export default function ChatPage() {
                 {message.role === 'user' && (
                   <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 bg-white/10">
                     <img
-                      src={USER_IMAGE}
+                      src={getUserImage()}
                       alt="User"
                       className="w-full h-full object-cover"
                     />
