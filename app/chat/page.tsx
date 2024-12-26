@@ -6,7 +6,6 @@ import { getAIResponse } from '../actions/chat-actions'
 import Link from "next/link"
 import { Send } from 'lucide-react'
 import { TypingEffect } from "../components/TypingEffect"
-import '../types/spline.d.ts'
 
 interface Message {
   role: 'user' | 'assistant'
@@ -76,13 +75,12 @@ export default function ChatPage() {
       setIsTyping(true)
       setCurrentResponse(response)
       
-      // Add the AI message after typing is complete
       setTimeout(() => {
         const aiMessage: Message = { role: 'assistant', content: response }
         setMessages(prev => [...prev, aiMessage])
         setIsTyping(false)
         setCurrentResponse('')
-      }, response.length * 30 + 500) // Adjust timing based on text length
+      }, response.length * 30 + 500)
     } catch (error) {
       console.error('Error:', error)
       const errorMessage: Message = { 
