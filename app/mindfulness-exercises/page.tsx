@@ -105,7 +105,7 @@ export default function MindfulnessPage() {
             text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 
             hover:opacity-80 transition-all duration-300">
             <span className="animate-pulse">🧘</span>
-            Be Mindful. We'll help you relax.
+            Wind Down. We'll help you relax.
             <span className="animate-pulse delay-75">✨</span>
           </Link>
         </div>
