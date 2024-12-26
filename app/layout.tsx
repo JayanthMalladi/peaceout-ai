@@ -7,7 +7,7 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Mindfulcare - Mental Health Support',
+  title: 'PeaceOut.AI - Mental Health Support',
   description: 'Get the mental health support you need',
 }
 

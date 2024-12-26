@@ -15,7 +15,7 @@ interface Message {
 export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([{
     role: 'assistant',
-    content: 'Welcome to Mindfulcare! How can I assist you today?'
+    content: 'Welcome to PeaceOut.AI! How can I assist you today?'
   }])
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
