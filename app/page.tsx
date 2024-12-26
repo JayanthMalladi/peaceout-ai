@@ -6,8 +6,8 @@ import { Navigation } from "./components/navigation"
 
 export default function Home() {
   return (
-    <main className="min-h-screen relative">
-      {/* 3D Background */}
+    <div className="min-h-screen bg-black text-white overflow-hidden">
+      {/* Background Spline Scene */}
       <div className="fixed inset-0 w-full h-full">
         <iframe
           src="https://prod.spline.design/UuyCx1DSUQcS9uVa/scene.splinecode"
@@ -19,23 +19,27 @@ export default function Home() {
       </div>
 
       {/* Content Layer */}
-      <div className="relative z-10 min-h-screen flex flex-col items-center justify-center text-white">
-        <h1 className="text-6xl font-bold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
-          PeaceOut.AI
-        </h1>
-        <p className="text-xl text-center mb-12 max-w-2xl px-4">
-          Your AI companion for mental well-being
-        </p>
-        <a
-          href="/chat"
-          className="px-8 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 
-            hover:opacity-90 transition-all duration-300 ease-out
-            hover:transform hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20"
-        >
-          Start Chatting
-        </a>
+      <div className="relative z-10">
+        <Navigation />
+        <main className="min-h-screen">
+          <div className="flex flex-col items-center justify-center min-h-screen p-8">
+            <div className="max-w-2xl text-center">
+              <h1 className="mb-6 text-5xl font-bold lg:text-7xl">
+                Mental Health Support
+              </h1>
+              <p className="mb-8 text-xl">
+                Get the support you need, when you need it. Talk to our AI companion about anything that's on your mind.
+              </p>
+              <Link href="/chat">
+                <button className="px-8 py-3 text-lg font-medium text-white transition-colors rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600">
+                  Start Chatting
+                </button>
+              </Link>
+            </div>
+          </div>
+        </main>
       </div>
-    </main>
+    </div>
   )
 }
 
