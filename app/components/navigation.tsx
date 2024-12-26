@@ -15,14 +15,6 @@ export function Navigation() {
         >
           PeaceOut.AI
         </Link>
-        <Link 
-          href="/chat" 
-          className="px-6 py-2 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 
-            text-white font-medium hover:opacity-90 transition-all duration-300 
-            hover:scale-105 hover:shadow-lg hover:shadow-pink-500/20"
-        >
-          Get Started
-        </Link>
       </div>
     </nav>
   )
