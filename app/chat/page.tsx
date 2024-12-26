@@ -41,6 +41,11 @@ export default function ChatPage() {
   const [isLoading, setIsLoading] = useState(false)
   const [isTyping, setIsTyping] = useState(false)
   const [currentResponse, setCurrentResponse] = useState('')
+  const [userInputs, setUserInputs] = useState({
+    primary_concern: '',
+    support_preference: ''
+  })
+  const [currentQuestion, setCurrentQuestion] = useState<'concern' | 'preference'>('concern')
 
   const getUserImage = () => {
     switch(gender) {
@@ -57,7 +62,7 @@ export default function ChatPage() {
     setGender(selectedGender)
     setMessages([{
       role: 'assistant',
-      content: 'Welcome to PeaceOut.AI! Tell me what\'s on your mind and I\'ll do my best to help you.'
+      content: "Welcome to PeaceOut.AI! I'm here to support you. Please tell me what's your main concern or what you'd like help with today?"
     }])
   }
 
@@ -71,7 +76,27 @@ export default function ChatPage() {
     setIsLoading(true)
 
     try {
-      const response = await getAIResponse(input)
+      let response: string
+      
+      if (currentQuestion === 'concern') {
+        setUserInputs(prev => ({ ...prev, primary_concern: input }))
+        response = "Thank you for sharing. What type of support are you looking for right now? (For example: 'immediate anxiety relief' or 'help with sleep issues')"
+        setCurrentQuestion('preference')
+      } else {
+        setUserInputs(prev => ({ ...prev, support_preference: input }))
+        // Make API call with both inputs
+        const result = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            primary_concern: userInputs.primary_concern,
+            support_preference: input
+          })
+        }).then(res => res.json())
+        
+        response = result.response
+      }
+
       setIsTyping(true)
       setCurrentResponse(response)
       
