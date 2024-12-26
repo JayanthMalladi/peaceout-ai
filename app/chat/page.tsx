@@ -96,12 +96,12 @@ export default function ChatPage() {
 
   if (!gender) {
     return (
-      <div className="min-h-screen min-h-[100dvh] bg-black text-white flex items-center justify-center p-4">
-        <div className="bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-lg max-w-md w-full 
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <div className="bg-white/10 backdrop-blur-md p-8 rounded-lg max-w-md w-full 
           animate-[popup_0.3s_ease-out] transform-gpu">
-          <h2 className="text-xl md:text-2xl font-bold text-center mb-6 md:mb-8">Welcome to PeaceOut.AI</h2>
-          <p className="text-center mb-6 text-sm md:text-base">Please select your gender to continue:</p>
-          <div className="flex flex-col gap-3 md:gap-4">
+          <h2 className="text-2xl font-bold text-center mb-8">Welcome to PeaceOut.AI</h2>
+          <p className="text-center mb-6">Please select your gender to continue:</p>
+          <div className="flex flex-col gap-4">
             <button
               onClick={() => handleGenderSelect('male')}
               className="px-8 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 
@@ -133,42 +133,46 @@ export default function ChatPage() {
   }
 
   return (
-    <div className="min-h-screen min-h-[100dvh] bg-black text-white">
+    <div className="min-h-screen bg-black text-white">
       {/* Background Spline Scene */}
       <div className="fixed inset-0 w-full h-full bg-black">
         <spline-viewer
           url="https://prod.spline.design/UuyCx1DSUQcS9uVa/scene.splinecode"
           className="w-full h-full"
+          style={{ width: '100%', height: '100%' }}
         />
       </div>
 
       {/* Content Layer */}
-      <div className="relative z-20 flex flex-col h-screen h-[100dvh]">
+      <div className="relative z-20">
         {/* Header */}
-        <div className="text-center p-4 bg-black/40 backdrop-blur-md">
-          <Link href="/" className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 animate-gradient hover:opacity-80 transition-opacity">
+        <div className="text-center p-4">
+          <Link href="/" className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 animate-gradient hover:opacity-80 transition-opacity">
             PeaceOut.AI
           </Link>
         </div>
 
         {/* Chat Container */}
-        <div className="flex-1 bg-black/40 backdrop-blur-md overflow-hidden flex flex-col">
-          <div className="flex-1 overflow-y-auto p-4 md:p-6 space-y-4">
-            {/* Messages */}
+        <div className="flex-1 bg-black/40 backdrop-blur-md">
+          <div className="h-[calc(100vh-8rem)] overflow-y-auto p-6 space-y-4">
             {messages.map((message, i) => (
               <div
                 key={i}
-                className={`flex items-start gap-2 md:gap-3 ${
+                className={`flex items-start gap-3 ${
                   message.role === 'user' ? 'justify-end' : 'justify-start'
                 }`}
               >
                 {message.role === 'assistant' && (
-                  <div className="w-6 h-6 md:w-8 md:h-8 rounded-full overflow-hidden flex-shrink-0 bg-white/10">
-                    <img src={ASSISTANT_IMAGE} alt="AI Assistant" className="w-full h-full object-cover" />
+                  <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 bg-white/10">
+                    <img
+                      src={ASSISTANT_IMAGE}
+                      alt="AI Assistant"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 )}
                 <div
-                  className={`max-w-[85%] md:max-w-[80%] rounded-lg px-3 py-2 md:px-4 md:py-2 text-sm md:text-base animate-fade-in ${
+                  className={`max-w-[80%] rounded-lg px-4 py-2 animate-fade-in ${
                     message.role === 'user'
                       ? 'bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg shadow-purple-500/20'
                       : 'bg-white/10 backdrop-blur-sm border border-white/10'
@@ -177,55 +181,60 @@ export default function ChatPage() {
                   {message.content}
                 </div>
                 {message.role === 'user' && (
-                  <div className="w-6 h-6 md:w-8 md:h-8 rounded-full overflow-hidden flex-shrink-0 bg-white/10">
-                    <img src={getUserImage()} alt="User" className="w-full h-full object-cover" />
+                  <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 bg-white/10">
+                    <img
+                      src={getUserImage()}
+                      alt="User"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 )}
               </div>
             ))}
-            
-            {/* Typing Indicator */}
             {isTyping && (
-              <div className="flex items-start gap-2 md:gap-3 justify-start">
-                <div className="w-6 h-6 md:w-8 md:h-8 rounded-full overflow-hidden flex-shrink-0 bg-white/10">
-                  <img src={ASSISTANT_IMAGE} alt="AI Assistant" className="w-full h-full object-cover" />
+              <div className="flex items-start gap-3 justify-start">
+                <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 bg-white/10">
+                  <img
+                    src={ASSISTANT_IMAGE}
+                    alt="AI Assistant"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                <div className="bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg px-3 py-2 md:px-4 md:py-2 animate-fade-in">
+                <div className="bg-white/10 backdrop-blur-sm border border-white/10 rounded-lg px-4 py-2 animate-fade-in">
                   <TypingEffect text={currentResponse} />
                 </div>
               </div>
             )}
-            
-            {/* Loading Indicator */}
             {isLoading && !isTyping && (
-              <div className="flex justify-center">
-                <div className="animate-pulse text-gray-400">Thinking...</div>
+              <div className="flex justify-start">
+                <div className="bg-white/10 rounded-lg px-4 py-2 animate-pulse">
+                  Thinking...
+                </div>
               </div>
             )}
           </div>
 
-          {/* Input Form */}
-          <form onSubmit={handleSubmit} className="p-4 bg-black/60 backdrop-blur-md border-t border-white/10">
-            <div className="flex gap-2 md:gap-4 max-w-4xl mx-auto">
+          {/* Input Area */}
+          <div className="border-t border-white/10 p-4 bg-black/50 backdrop-blur-lg">
+            <form onSubmit={handleSubmit} className="max-w-4xl mx-auto flex gap-3">
               <input
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Type your message..."
-                className="flex-1 bg-white/10 text-white placeholder-gray-400 rounded-lg px-3 py-2 md:px-4 md:py-3
-                  focus:outline-none focus:ring-2 focus:ring-purple-500/50 border border-white/10"
+                className="flex-1 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-transparent transition-all hover:bg-white/10"
+                disabled={isLoading}
               />
               <button
                 type="submit"
-                disabled={isLoading || !input.trim()}
-                className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-2 rounded-lg
-                  hover:opacity-90 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed
-                  flex items-center justify-center min-w-[44px] md:min-w-[60px]"
+                disabled={isLoading}
+                className="px-8 py-2 text-white rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 flex items-center gap-2 disabled:opacity-50 transition-all shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40"
               >
-                <Send className="w-5 h-5 md:w-6 md:h-6" />
+                <span>Send</span>
+                <Send className="h-4 w-4" />
               </button>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     </div>
