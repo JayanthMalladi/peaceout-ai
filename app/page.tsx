@@ -112,21 +112,27 @@ export default function Home() {
         </section>
 
         {/* Blog Posts Section */}
-        <section className="py-32 px-6">
-          {/* Glowing Blogs Title */}
-          <div className="flex justify-center mb-16">
-            <div className="relative group">
-              <div className="absolute -inset-1 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 
-                opacity-25 group-hover:opacity-50 blur-xl transition-all duration-500 
-                group-hover:blur-2xl animate-pulse"></div>
-              <h2 className="relative text-5xl font-bold bg-clip-text text-transparent 
-                bg-gradient-to-r from-blue-400 to-purple-400 px-8 py-2">
-                Blogs
-              </h2>
+        <section className="py-32 px-6 bg-gradient-to-b from-black via-purple-900/20 to-black">
+          {/* Backdrop Blur Layer */}
+          <div className="absolute inset-0 backdrop-blur-xl"></div>
+          
+          {/* Content */}
+          <div className="relative z-10">
+            {/* Glowing Blogs Title */}
+            <div className="flex justify-center mb-16">
+              <div className="relative group">
+                <div className="absolute -inset-1 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 
+                  opacity-25 group-hover:opacity-50 blur-xl transition-all duration-500 
+                  group-hover:blur-2xl animate-pulse"></div>
+                <h2 className="relative text-5xl font-bold bg-clip-text text-transparent 
+                  bg-gradient-to-r from-blue-400 to-purple-400 px-8 py-2">
+                  Latest Insights
+                </h2>
+              </div>
             </div>
-          </div>
-          <div className="max-w-7xl mx-auto">
-            <BlogCarousel />
+            <div className="max-w-7xl mx-auto">
+              <BlogCarousel />
+            </div>
           </div>
         </section>
       </div>
