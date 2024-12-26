@@ -31,7 +31,7 @@ const blogPosts = [
   {
     title: "Understanding Emotional Eating",
     excerpt: "Discover the connection between emotions and eating patterns, and learn healthy coping strategies for emotional eating.",
-    image: "https://images.unsplash.com/photo-1495814984661-188a48492b3f?ixlib=rb-4.0.3",
+    image: "https://imgur.com/E6LrRNV.png",
     url: "https://psychcentral.com/health/emotional-eating"
   }
 ]
