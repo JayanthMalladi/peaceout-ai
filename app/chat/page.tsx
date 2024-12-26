@@ -62,7 +62,18 @@ export default function ChatPage() {
     setGender(selectedGender)
     setMessages([{
       role: 'assistant',
-      content: "Welcome to PeaceOut.AI! I'm here to support you. Please tell me what's your main concern or what you'd like help with today?"
+      content: `Welcome to PeaceOut.AI! I'm here to support you through a two-step process:
+
+1. First, please share your primary concern or what's troubling you (e.g., "I'm feeling anxious about work deadlines" or "I'm having trouble sleeping lately")
+
+2. Then, I'll ask about your preferred type of support:
+   • Immediate anxiety relief
+   • Sleep improvement
+   • Mindfulness exercises
+   • Social/relationship guidance
+   • Specific coping strategies
+
+Let's start - what's your main concern today?`
     }])
   }
 
@@ -80,7 +91,13 @@ export default function ChatPage() {
       
       if (currentQuestion === 'concern') {
         setUserInputs(prev => ({ ...prev, primary_concern: input }))
-        response = "Thank you for sharing. What type of support are you looking for right now? (For example: 'immediate anxiety relief' or 'help with sleep issues')"
+        response = `Thank you for sharing. What type of support would you prefer? Choose from:
+
+• Immediate anxiety relief
+• Sleep improvement
+• Mindfulness exercises
+• Social/relationship guidance
+• Specific coping strategies`
         setCurrentQuestion('preference')
       } else {
         setUserInputs(prev => ({ ...prev, support_preference: input }))
@@ -117,6 +134,19 @@ export default function ChatPage() {
     } finally {
       setIsLoading(false)
     }
+  }
+
+  function ThinkingAnimation() {
+    return (
+      <div className="flex gap-1.5">
+        <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" 
+          style={{ animationDelay: "0ms" }}></div>
+        <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" 
+          style={{ animationDelay: "150ms" }}></div>
+        <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" 
+          style={{ animationDelay: "300ms" }}></div>
+      </div>
+    )
   }
 
   if (!gender) {
@@ -236,7 +266,11 @@ export default function ChatPage() {
                 </div>
                 <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm 
                   border border-white/10 rounded-2xl px-6 py-3">
-                  <TypingEffect text={currentResponse} />
+                  {currentResponse ? (
+                    <TypingEffect text={currentResponse} />
+                  ) : (
+                    <ThinkingAnimation />
+                  )}
                 </div>
               </div>
             )}
