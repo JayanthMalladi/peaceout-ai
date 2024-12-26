@@ -3,6 +3,7 @@ import type { ReactNode } from 'react'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Script from 'next/script'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,9 +20,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.54/build/spline-viewer.js"></script>
+        <Script
+          src="https://unpkg.com/@splinetool/viewer@1.0.54/build/spline-viewer.js"
+          strategy="lazyOnload"
+        />
       </head>
-      <body>{children}</body>
+      <body className="overflow-x-hidden">{children}</body>
     </html>
   )
 }
