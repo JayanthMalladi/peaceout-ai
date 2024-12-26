@@ -12,8 +12,8 @@ interface Message {
   content: string
 }
 
-const ASSISTANT_IMAGE = "https://raw.githubusercontent.com/dicebear/dicebear/main/assets/logo-readme.png"
-const USER_IMAGE = "https://raw.githubusercontent.com/dicebear/dicebear/main/assets/logo-readme.png"
+const ASSISTANT_IMAGE = "https://i.imgur.com/6YUbxXs.png"
+const USER_IMAGE = "https://robohash.org/user?set=set4&size=96x96"
 
 export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([{
