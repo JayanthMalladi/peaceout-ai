@@ -1,5 +1,5 @@
 const MIRA_API_URL = 'https://flow-api.mira.network/v1/flows/flows/jaymalladi/mood-analysis-chatbot'
-const FLOW_VERSION = "1.0.6"
+const FLOW_VERSION = "1.0.7"
 
 export async function getMiraResponse(input: string) {
   const apiKey = process.env.MIRA_API_KEY
