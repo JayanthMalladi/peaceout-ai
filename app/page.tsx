@@ -2,7 +2,6 @@
 
 import React from 'react'
 import { Navigation } from "./components/navigation"
-import '../types/spline.d.ts'
 
 export default function Home() {
   return (
