@@ -41,22 +41,6 @@ export default function ChatPage() {
   const [isLoading, setIsLoading] = useState(false)
   const [isTyping, setIsTyping] = useState(false)
   const [currentResponse, setCurrentResponse] = useState('')
-  const [userInputs, setUserInputs] = useState({
-    primary_concern: '',
-    support_preference: ''
-  })
-  const [currentQuestion, setCurrentQuestion] = useState<'concern' | 'preference'>('concern')
-
-  const getUserImage = () => {
-    switch(gender) {
-      case 'male':
-        return MALE_USER_IMAGE
-      case 'female':
-        return FEMALE_USER_IMAGE
-      default:
-        return DEFAULT_USER_IMAGE
-    }
-  }
 
   const handleGenderSelect = (selectedGender: string) => {
     setGender(selectedGender)
@@ -65,22 +49,15 @@ export default function ChatPage() {
       content: 
 `Welcome to PeaceOut.AI! 🌟
 
-I'm here to support you through a two-step process:
+I'm here to support you. Please share what's on your mind - whether it's:
 
-1️⃣ First, please share your primary concern or what's troubling you. 
-   For example:
-   • "I'm feeling anxious about work deadlines"
-   • "I'm having trouble sleeping lately"
-   • "I'm feeling overwhelmed with relationships"
+• Feeling anxious or stressed
+• Having trouble sleeping
+• Dealing with relationships
+• Feeling overwhelmed
+• Or any other concerns
 
-2️⃣ Then, I'll ask about your preferred type of support:
-   • Immediate anxiety relief
-   • Sleep improvement
-   • Mindfulness exercises
-   • Social/relationship guidance
-   • Specific coping strategies
-
-Let's start - what's your main concern today? 💭`
+I'm here to listen and help. What would you like to talk about? 💭`
     }])
   }
 
@@ -235,7 +212,7 @@ Let's start - what's your main concern today? 💭`
                   <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 
                     ring-2 ring-blue-500/30 ring-offset-2 ring-offset-black/50">
                     <img
-                      src={getUserImage()}
+                      src={DEFAULT_USER_IMAGE}
                       alt="User"
                       className="w-full h-full object-cover"
                     />
