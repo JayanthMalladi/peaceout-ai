@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 
 const MIRA_API_URL = 'https://flow-api.mira.network/v1/flows/flows/jaymalladi/mental-health-assistant'
-const FLOW_VERSION = "1.0.2"
+const FLOW_VERSION = "1.0.4"
 
 export async function POST(request: Request) {
   try {
