@@ -15,7 +15,7 @@ const developers = [
     email: "jayanthmalladi844@gmail.com"
   },
   {
-    name: "Shekahr Suman",
+    name: "Shekhar Suman",
     role: "AI/ML Engineer",
     image: "https://i.imgur.com/g2aZbAY.png",
     bio: "Specialized in AI-powered mental health support systems.",

@@ -47,7 +47,7 @@ export default function ChatPage() {
     setMessages([{
       role: 'assistant',
       content: 
-`Welcome to PeaceOut.AI! 🌟
+`Welcome to PeaceOut.AI! 
 
 I'm here to support you. Please share what's on your mind - whether it's:
 
