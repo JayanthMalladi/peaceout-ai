@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 
 const MIRA_API_URL = 'https://flow-api.mira.network/v1/flows/flows/jaymalladi/mood-analysis-chatbot'
-const FLOW_VERSION = "1.0.7"
+const FLOW_VERSION = "1.0.6"
 
 export async function POST(request: Request) {
   try {
