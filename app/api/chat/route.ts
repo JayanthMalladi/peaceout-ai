@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 
-const MIRA_API_URL = 'https://flow-api.mira.network/v1/flows/flows/jaymalladi/mood-analysis-chatbot'
-const FLOW_VERSION = "1.1.5"
+const MIRA_API_URL = 'https://flow-api.mira.network/v1/flows/flows/jaymalladi/mental-health-assistant'
+const FLOW_VERSION = "1.0.4"
 
 export async function POST(request: Request) {
   try {
@@ -44,7 +44,7 @@ export async function POST(request: Request) {
     }
 
     const result = JSON.parse(responseText)
-    return NextResponse.json({ response: result.result })
+    return NextResponse.json({ response: result.result.summary })
     
   } catch (error) {
     console.error('Server error:', error)
