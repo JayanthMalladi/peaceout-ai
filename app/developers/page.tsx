@@ -17,7 +17,7 @@ const developers = [
   {
     name: "Shekhar Suman",
     role: "BTech at IIT Patna | AI/ML Engineer",
-    image: "https://i.imgur.com/pCVQiO9.png",
+    image: "https://imgur.com/ymVsGQO.png",
     bio: "A creative individual with knowledge of machine learning and some development experience, blending technical skills with innovative thinking.",
     github: "https://github.com/glasspollution",
     linkedin: "https://www.linkedin.com/in/it-is-shekhar/",
