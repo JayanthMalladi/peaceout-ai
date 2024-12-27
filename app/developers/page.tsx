@@ -8,8 +8,8 @@ const developers = [
   {
     name: "Jayanth Malladi",
     role: "Student at IIT Patna | AI/ML Enthusiast | Full Stack Developer",
-    image: "https://i.imgur.com/pCVQiO9.png",
-    bio: "Passionate about creating innovative solutions in mental health tech.",
+    image: "https://imgur.com/ILTouIP.png",
+    bio: "Passionate about leveraging AI, web development, and finance to create innovative and impactful solutions that address real-world challenges.",
     github: "https://github.com/JayanthMalladi",
     linkedin: "https://www.linkedin.com/in/jayanthmalladi/",
     email: "jayanthmalladi844@gmail.com"
