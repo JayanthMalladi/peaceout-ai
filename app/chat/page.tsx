@@ -7,16 +7,19 @@ import Link from "next/link"
 import { Send } from 'lucide-react'
 import { TypingEffect } from "../components/TypingEffect"
 
+// Hey! This is what each message looks like in our chat
 interface Message {
   role: 'user' | 'assistant'
   content: string
 }
 
+// These are the profile pics we use in the chat
 const ASSISTANT_IMAGE = "https://i.imgur.com/EiC82W4.png"
 const MALE_USER_IMAGE = "https://i.imgur.com/pCVQiO9.png"
 const FEMALE_USER_IMAGE = "https://i.imgur.com/g2aZbAY.png"
 const DEFAULT_USER_IMAGE = "https://robohash.org/user?set=4"
 
+// This neat animation makes new elements pop up smoothly
 const popupAnimation = `@keyframes popup {
   0% {
     opacity: 0;
@@ -28,6 +31,7 @@ const popupAnimation = `@keyframes popup {
   }
 }`
 
+// Let's add our animation to the page
 if (typeof document !== 'undefined') {
   const style = document.createElement('style')
   style.textContent = popupAnimation
@@ -35,6 +39,7 @@ if (typeof document !== 'undefined') {
 }
 
 export default function ChatPage() {
+  // Keep track of everything happening in our chat
   const [gender, setGender] = useState<string | null>(null)
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState('')
@@ -103,6 +108,7 @@ I'm here to listen and help. What would you like to talk about? 💭`
     }
   }
 
+  // Those bouncing dots while the AI is thinking
   function ThinkingAnimation() {
     return (
       <div className="flex gap-1.5">
@@ -116,6 +122,7 @@ I'm here to listen and help. What would you like to talk about? 💭`
     )
   }
 
+  // Pick the right avatar based on user's choice
   const getUserImage = () => {
     switch(gender) {
       case 'male':
@@ -167,7 +174,7 @@ I'm here to listen and help. What would you like to talk about? 💭`
 
   return (
     <div className="min-h-screen bg-black text-white flex flex-col">
-      {/* Background Spline Scene */}
+      {/* Our awesome 3D background */}
       <div className="fixed inset-0 w-full h-full bg-black">
         <spline-viewer
           url="https://prod.spline.design/UuyCx1DSUQcS9uVa/scene.splinecode"
@@ -175,9 +182,9 @@ I'm here to listen and help. What would you like to talk about? 💭`
         />
       </div>
 
-      {/* Content Layer */}
+      {/* Where all the magic happens */}
       <div className="relative z-20 flex flex-col h-screen">
-        {/* Header */}
+        {/* The fancy header with our logo */}
         <div className="text-center p-6 bg-gradient-to-b from-black/80 to-transparent">
           <Link href="/" className="text-3xl font-bold inline-flex items-center gap-2 
             text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 
@@ -188,7 +195,7 @@ I'm here to listen and help. What would you like to talk about? 💭`
           </Link>
         </div>
 
-        {/* Chat Container with Modern Scrollbar */}
+        {/* Where all our chat messages live */}
         <div className="flex-1 bg-gradient-to-b from-black/40 via-black/60 to-black/40 backdrop-blur-md overflow-hidden">
           <div className="h-full overflow-y-auto p-6 space-y-4 
             scrollbar-thin scrollbar-track-transparent hover:scrollbar-thumb-purple-500/50
@@ -255,7 +262,7 @@ I'm here to listen and help. What would you like to talk about? 💭`
           </div>
         </div>
 
-        {/* Input Area with Enhanced Design */}
+        {/* Where users type their messages */}
         <div className="border-t border-white/10 p-6 bg-gradient-to-t from-black to-black/50 backdrop-blur-lg">
           <form onSubmit={handleSubmit} className="max-w-4xl mx-auto flex gap-4">
             <input
