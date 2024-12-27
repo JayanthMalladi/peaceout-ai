@@ -116,6 +116,17 @@ I'm here to listen and help. What would you like to talk about? 💭`
     )
   }
 
+  const getUserImage = () => {
+    switch(gender) {
+      case 'male':
+        return MALE_USER_IMAGE
+      case 'female':
+        return FEMALE_USER_IMAGE
+      default:
+        return DEFAULT_USER_IMAGE
+    }
+  }
+
   if (!gender) {
     return (
       <div className="min-h-screen bg-black text-white flex items-center justify-center">
@@ -212,7 +223,7 @@ I'm here to listen and help. What would you like to talk about? 💭`
                   <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 
                     ring-2 ring-blue-500/30 ring-offset-2 ring-offset-black/50">
                     <img
-                      src={DEFAULT_USER_IMAGE}
+                      src={getUserImage()}
                       alt="User"
                       className="w-full h-full object-cover"
                     />
