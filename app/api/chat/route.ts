@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 
-const MIRA_API_URL = 'https://flow-api.mira.network/v1/flows/flows/jaymalladi/mental-health-assistant'
-const FLOW_VERSION = "1.0.4"
+const MIRA_API_URL = 'https://flow-api.mira.network/v1/flows/flows/jaymalladi/mood-analysis-chatbot'
+const FLOW_VERSION = "1.1.5"
 
 export async function POST(request: Request) {
   try {
@@ -14,8 +14,8 @@ export async function POST(request: Request) {
       )
     }
 
-    const { primary_concern, support_preference } = await request.json()
-    console.log('Received input:', { primary_concern, support_preference })
+    const { primary_concern } = await request.json()
+    console.log('Received input:', { mood: primary_concern })
 
     const miraResponse = await fetch(MIRA_API_URL, {
       method: 'POST',
@@ -25,8 +25,7 @@ export async function POST(request: Request) {
       },
       body: JSON.stringify({
         input: {
-          primary_concern,
-          support_preference
+          mood: primary_concern
         },
         version: FLOW_VERSION
       })
@@ -44,7 +43,7 @@ export async function POST(request: Request) {
     }
 
     const result = JSON.parse(responseText)
-    return NextResponse.json({ response: result.result.summary })
+    return NextResponse.json({ response: result.result })
     
   } catch (error) {
     console.error('Server error:', error)
