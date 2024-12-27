@@ -92,49 +92,27 @@ Let's start - what's your main concern today? 💭`
     setMessages(prev => [...prev, userMessage])
     setInput('')
     setIsLoading(true)
+    setIsTyping(true)
+    setCurrentResponse('')
 
     try {
-      let response: string
+      const result = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          primary_concern: input
+        })
+      }).then(res => res.json())
       
-      if (currentQuestion === 'concern') {
-        setUserInputs(prev => ({ ...prev, primary_concern: input }))
-        response = 
-`Thank you for sharing that with me. 🤗
-
-Please choose your preferred type of support from these options:
-
-• Immediate anxiety relief
-• Sleep improvement
-• Mindfulness exercises
-• Social/relationship guidance
-• Specific coping strategies
-
-Which approach would you find most helpful?`
-        setCurrentQuestion('preference')
-      } else {
-        setUserInputs(prev => ({ ...prev, support_preference: input }))
-        // Make API call with both inputs
-        const result = await fetch('/api/chat', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            primary_concern: userInputs.primary_concern,
-            support_preference: input
-          })
-        }).then(res => res.json())
-        
-        response = result.response
-      }
-
-      setIsTyping(true)
-      setCurrentResponse(response)
+      setCurrentResponse(result.response)
       
       setTimeout(() => {
-        const aiMessage: Message = { role: 'assistant', content: response }
+        const aiMessage: Message = { role: 'assistant', content: result.response }
         setMessages(prev => [...prev, aiMessage])
         setIsTyping(false)
         setCurrentResponse('')
-      }, response.length * 30 + 500)
+      }, result.response.length * 30 + 500)
+
     } catch (error) {
       console.error('Error:', error)
       const errorMessage: Message = { 
