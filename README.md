@@ -1,4 +1,4 @@
- PeaceOut.AI 🧠✨
+ #PeaceOut.AI 🧠✨
 
 A modern, AI-powered mental health support platform that provides 24/7 emotional support and personalized responses through an intuitive interface.
 
